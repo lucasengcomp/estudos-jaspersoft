@@ -81,13 +81,15 @@ FROM funcionarios f, empresas e]]>
 			</textField>
 			<textField>
 				<reportElement x="141" y="0" width="138" height="30" uuid="b897a2b5-704a-4436-93ae-0cb10ef4ac75"/>
-				<textElement textAlignment="Left" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{cnpj}]]></textFieldExpression>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="html">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<b>CNPJ: </b>" + $F{cnpj}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="279" y="0" width="138" height="30" uuid="4c34b5f3-fbe5-458f-92dd-f2fdcc590fd5"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{telefone}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["(" + $F{telefone}.substring( 0, 2 ) + ") " + $F{telefone}.substring( 2, 6 ) + "-"  + $F{telefone}.substring( 6, 10 )]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="417" y="0" width="138" height="30" uuid="2abad9fa-3594-488d-b745-af1e9b800317"/>
@@ -171,7 +173,7 @@ FROM funcionarios f, empresas e]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="dd/MM/yyyy">
 				<reportElement style="estilo_cores_alternadas" x="278" y="0" width="138" height="30" uuid="c864bc1a-8375-4644-ad4b-af64c940e0e9">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="41032829-cf3a-4ace-a71f-44fcf18e3926"/>
 				</reportElement>
@@ -187,7 +189,7 @@ FROM funcionarios f, empresas e]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{data_nascimento}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="¤ #,##0.00;¤ -#,##0.00">
 				<reportElement style="estilo_cores_alternadas" x="416" y="0" width="139" height="30" uuid="c2893381-ba1d-46f2-8dab-05b69cd8743a">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bc831f6c-8c13-48af-8158-792127184647"/>
 				</reportElement>
