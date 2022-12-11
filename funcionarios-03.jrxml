@@ -252,10 +252,42 @@ FROM funcionarios f, empresas e]]>
 		</band>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band height="30" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="100" y="0" width="100" height="30" uuid="b5c16aca-399b-492e-8efa-cc240158e009"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="30" uuid="d072d19c-171c-48af-a482-b037d1c9e1ac"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Relatório criado em: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="365" y="0" width="95" height="30" uuid="d86a6c0c-60b7-4a26-9f13-9fdff45fe3c9"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="460" y="0" width="95" height="30" uuid="bc0f0ca0-b3f6-48fc-a8c0-134393d37960"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageFooter>
 	<summary>
 		<band height="30" splitType="Stretch">
+			<rectangle>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="30" backcolor="#E3E3E3" uuid="767efd85-167d-4411-8b5e-c3f46ebeb5a7"/>
+			</rectangle>
 			<staticText>
 				<reportElement x="155" y="0" width="100" height="30" uuid="f12de5ad-c116-4a22-b72f-1db99e78df71"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
@@ -279,6 +311,7 @@ FROM funcionarios f, empresas e]]>
 			</textField>
 			<textField pattern="¤ #,##0.00;¤ -#,##0.00">
 				<reportElement x="455" y="0" width="100" height="30" uuid="0e168ee4-0ddc-4819-9ff7-ef7b8d58bf84"/>
+				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$V{SALARIO_MEDIA_GERAL}]]></textFieldExpression>
 			</textField>
 		</band>
